@@ -177,7 +177,7 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
 }
 @media (max-width:899px){
 .menu{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:min(372px,100%);margin-left:auto;margin-right:auto}
-.mcol{display:flex;flex-direction:column;gap:16px}
+.mcol{display:contents}
 .mcol .mbtn{text-align:center;padding-left:8px;padding-right:8px}
 }
 /* ===== holo beam ===== */
@@ -222,13 +222,6 @@ body.holo-on .stage *,body.holo-on .stage *::before,body.holo-on .stage *::after
 .cf textarea{resize:vertical;min-height:96px;line-height:1.45}
 .cf input:focus,.cf textarea:focus{border-color:var(--glow2);box-shadow:0 0 0 1px rgba(63,169,255,.4),0 0 16px rgba(26,125,255,.3)}
 .cf .bad{border-color:#ff6b78!important;box-shadow:0 0 12px rgba(255,80,100,.25)!important}
-.cf .topics{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
-.cf .topics legend{margin-bottom:8px;padding:0;width:100%}
-.cf .topics label{cursor:pointer}
-.cf .topics input{position:absolute;opacity:0;pointer-events:none}
-.cf .topics span{display:inline-block;padding:8px 12px;border:1px solid rgba(63,169,255,.3);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#9fbfe6;font-weight:600;transition:all .2s}
-.cf .topics input:checked+span{border-color:var(--glow2);color:#fff;background:rgba(26,125,255,.22);box-shadow:0 0 14px rgba(26,125,255,.35)}
-.cf .topics input:focus-visible+span{outline:1px solid #fff;outline-offset:2px}
 .cf .hp{position:absolute;left:-9999px;width:1px;height:1px}
 .cf-note{font-size:.78rem!important;color:rgba(160,200,255,.6)!important;margin:0!important}
 .cf-note a{color:#9fc6ff}
@@ -312,12 +305,6 @@ body.holo-on .stage *,body.holo-on .stage *::before,body.holo-on .stage *::after
       <p class="k">GET IN TOUCH</p>
       <h2>Let's talk.</h2>
       <form class="cf" id="cf" novalidate>
-        <fieldset class="topics"><legend>TOPIC</legend>
-          <label><input type="radio" name="topic" value="Collaboration" checked><span>Collaboration</span></label>
-          <label><input type="radio" name="topic" value="Event"><span>Event</span></label>
-          <label><input type="radio" name="topic" value="Private evening"><span>Private evening</span></label>
-          <label><input type="radio" name="topic" value="Other"><span>Other</span></label>
-        </fieldset>
         <div class="row">
           <label class="fld"><span>NAME</span><input name="name" type="text" autocomplete="name" required maxlength="80"></label>
           <label class="fld"><span>EMAIL</span><input name="email" type="email" autocomplete="email" required maxlength="120"></label>
@@ -397,10 +384,9 @@ body.holo-on .stage *,body.holo-on .stage *::before,body.holo-on .stage *::after
     bad(f.name,!n);bad(f.email,!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m));bad(f.message,t.length<5);
     if(f.querySelector('.bad')){msg.textContent='Please fill in name, a valid email and a message.';f.querySelector('.bad').focus();return}
     if(f._honey.value){done.hidden=false;f.hidden=true;return}
-    var topic=(f.querySelector('input[name=topic]:checked')||{}).value||'Other';
-    btn.disabled=true;btn.classList.add('busy');btn.querySelector('span').textContent='Transmitting';
+        btn.disabled=true;btn.classList.add('busy');btn.querySelector('span').textContent='Transmitting';
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({name:n,email:m,topic:topic,message:t,_subject:'CHREIS7 · '+topic+' · '+n,_replyto:m,_template:'table',_captcha:'false'})})
+      body:JSON.stringify({name:n,email:m,message:t,_subject:'CHREIS7 · Message from '+n,_replyto:m,_template:'table',_captcha:'false'})})
     .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw 0})})
     .then(function(){f.hidden=true;done.hidden=false;var wb=f.closest('.wbody');if(wb)wb.scrollTop=0})
     .catch(function(){msg.textContent='Transmission failed – please try again in a moment.'})
