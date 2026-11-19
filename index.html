@@ -190,6 +190,17 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
 .beamorb.off{opacity:0;transform:scale(2.2);transition:opacity .45s,transform .45s}
 .mbtn.firing{border-color:var(--glow2);box-shadow:0 0 22px rgba(63,169,255,.55);color:#fff}
 @keyframes beamflick{0%{opacity:.4}50%{opacity:1}}
+/* ===== about: crystal bear + floating shards ===== */
+.frame.bear{cursor:crosshair;touch-action:pan-y}
+.frame.bear img.base{filter:contrast(1.08) brightness(.95) saturate(.9)}
+.frame.bear .tint{opacity:.42}
+.shards{position:absolute;inset:0;z-index:2;pointer-events:none}
+.shards .sh{position:absolute;left:var(--x);top:var(--y);transform:translate3d(var(--px,0px),var(--py,0px),0);transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .8s;opacity:0}
+.holo.open .shards .sh{opacity:var(--o)}
+.shards .sh i{display:block;width:var(--s);height:calc(var(--s)*1.9);clip-path:polygon(50% 0,100% 42%,50% 100%,0 42%);background:linear-gradient(160deg,#fff 0%,#cfe6ff 35%,rgba(63,169,255,.55) 70%,rgba(63,169,255,.1));filter:drop-shadow(0 0 4px rgba(150,205,255,.9));animation:drift var(--d) ease-in-out var(--dl) infinite;transform:rotate(var(--r))}
+.shards .sh.burst{transition:transform 1.4s cubic-bezier(.1,.9,.2,1)}
+@keyframes drift{0%,100%{transform:translate3d(0,0,0) rotate(var(--r))}50%{transform:translate3d(var(--dx),var(--dy),0) rotate(calc(var(--r) + 28deg))}}
+@media (prefers-reduced-motion:reduce){.shards .sh i{animation:none}}
 </style>
 </head>
 <body>
@@ -229,7 +240,7 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
   <div class="win">
     <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
     <div class="whead"><span>CH7://01_ABOUT</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
-    <div class="wbody about"><div class="frame"><img class="base" src="images/chreis7-zurich.webp" alt="Zürich at night" decoding="async"><img class="bloom" src="images/chreis7-zurich.webp" alt="" aria-hidden="true" decoding="async"><div class="patch p1"></div><div class="tint"></div><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div>
+    <div class="wbody about"><div class="frame bear" id="bear"><img class="base" src="images/chreis7-about.webp" width="660" height="874" alt="Portrait of Hans X. Baer, half his face turning into a crystal bear" decoding="async"><img class="bloom" src="images/chreis7-about.webp" alt="" aria-hidden="true" decoding="async"><div class="tint"></div><div class="shards" aria-hidden="true"></div><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div>
       <div class="wtext">
         <p class="k">ABOUT CHREIS7</p>
         <h2>Built to be explored.</h2>
@@ -289,6 +300,27 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
 </script>
 <script>
 (function(){var c=document.getElementById('core'),busy=false;function go(){if(busy)return;busy=true;c.classList.remove('go');void c.offsetWidth;c.classList.add('go');setTimeout(function(){c.classList.remove('go');busy=false},2250)}c.addEventListener('click',go);c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})})();
+</script>
+<script>
+(function(){
+  var f=document.getElementById('bear');if(!f)return;var box=f.querySelector('.shards'),S=[],seed=11;
+  function rnd(){seed=(seed*9301+49297)%233280;return seed/233280}
+  /* shards cluster on the crystal (right) side and drift around the edges */
+  for(var k=0;k<22;k++){
+    var side=rnd(),x,y;
+    if(side<.6){x=52+rnd()*44;y=8+rnd()*72}else if(side<.8){x=4+rnd()*20;y=10+rnd()*60}else{x=20+rnd()*60;y=2+rnd()*12}
+    var e=document.createElement('span');e.className='sh';var dep=.4+rnd()*1.2;
+    e.style.cssText='--x:'+x+'%;--y:'+y+'%;--s:'+(3+rnd()*7).toFixed(1)+'px;--r:'+Math.round(rnd()*360)+'deg;--d:'+(5+rnd()*6).toFixed(1)+'s;--dl:-'+(rnd()*6).toFixed(1)+'s;--dx:'+((rnd()-.5)*18).toFixed(1)+'px;--dy:'+(-6-rnd()*14).toFixed(1)+'px;--o:'+(.55+rnd()*.45).toFixed(2)+';transition-delay:'+(k*35)+'ms';
+    e.appendChild(document.createElement('i'));box.appendChild(e);S.push({e:e,x:x,y:y,dep:dep})}
+  function move(cx,cy,burst){var r=f.getBoundingClientRect(),mx=(cx-r.left)/r.width*100,my=(cy-r.top)/r.height*100;
+    S.forEach(function(o){var dx=o.x-mx,dy=o.y-my,d=Math.hypot(dx,dy)||1,R=burst?60:34,push=Math.max(0,1-d/R)*(burst?70:26)*o.dep,
+      par=burst?0:6*o.dep;o.e.classList.toggle('burst',!!burst);
+      o.e.style.setProperty('--px',((dx/d)*push+(50-mx)/50*par).toFixed(1)+'px');o.e.style.setProperty('--py',((dy/d)*push+(50-my)/50*par).toFixed(1)+'px')})}
+  function reset(){S.forEach(function(o){o.e.classList.remove('burst');o.e.style.setProperty('--px','0px');o.e.style.setProperty('--py','0px')})}
+  f.addEventListener('pointermove',function(e){move(e.clientX,e.clientY,false)});
+  f.addEventListener('pointerleave',reset);
+  f.addEventListener('pointerdown',function(e){move(e.clientX,e.clientY,true);setTimeout(reset,900)});
+})();
 </script>
 </body>
 </html>
