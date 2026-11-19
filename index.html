@@ -150,6 +150,21 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
 .legal:hover,.legal:focus-visible{color:#cfe3ff;text-shadow:0 0 10px rgba(63,169,255,.7);outline:none}
 @media (max-width:600px){.legal{bottom:max(15px,calc(env(safe-area-inset-bottom) + 3px));font-size:.5rem;letter-spacing:.22em;margin-right:-.22em}}
 @media (max-width:360px){.legal{font-size:.46rem;letter-spacing:.14em}}
+/* ===== text windows ===== */
+.wbody{max-height:calc(88vh - 96px);overflow:auto;-webkit-overflow-scrolling:touch}
+.about{display:flex;gap:20px;align-items:center}
+.about .frame{flex:none}
+.about .frame img.base{max-width:min(300px,38vw);max-height:56vh}
+.wtext{width:min(420px,calc(92vw - 30px));padding:4px 6px;text-align:left}
+.wtext .k{font-size:.68rem;letter-spacing:.32em;color:#9fc6ff;font-weight:600}
+.wtext h2{font-family:'Michroma',sans-serif;font-weight:400;font-size:1.05rem;letter-spacing:.2em;margin:10px 0 14px;color:#fff;text-shadow:0 0 10px rgba(63,169,255,.45)}
+.wtext p{font-size:1.02rem;line-height:1.55;color:rgba(220,232,250,.86);font-weight:500}
+.wtext p+p{margin-top:10px}
+.wtext blockquote{margin-top:16px;padding-left:12px;border-left:2px solid var(--glow2);font-style:italic;color:#cfe3ff;font-size:.98rem;line-height:1.5;font-weight:500}
+.contact{padding:10px 8px 6px}
+.contact .mail{margin-top:22px;text-transform:none;letter-spacing:.12em}
+@media (max-width:700px){.about{flex-direction:column;align-items:stretch;gap:14px}.about .frame{align-self:center}.about .frame img.base{max-width:100%;max-height:30vh}.wtext{width:auto}.wtext p{font-size:.98rem}}
+@media (max-width:480px){.menu{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(330px,100%);margin-left:auto;margin-right:auto}.menu .mbtn{text-align:center;padding-left:8px;padding-right:8px}}
 </style>
 </head>
 <body>
@@ -173,18 +188,26 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
   <div class="bar"></div>
   <div class="tagline">EVERY ANGLE. <span class="accent">ONE STORY.</span></div>
   <nav class="menu" aria-label="Inhalte">
-    <button class="mbtn" data-open="w1"><b>01</b>Origin</button>
+    <button class="mbtn" data-open="w1"><b>01</b>About</button>
     <button class="mbtn" data-open="w2"><b>02</b>Perspective</button>
     <a class="mbtn" href="app.html" title="Event App"><b>03</b>Story</a>
+    <button class="mbtn" data-open="w4"><b>04</b>Get in touch</button>
   </nav>
 </main>
 </div>
-<div class="holo" id="w1" role="dialog" aria-modal="true" aria-label="Born in Zürich. Built for everywhere.">
+<div class="holo" id="w1" role="dialog" aria-modal="true" aria-label="About">
   <div class="shade" data-close></div>
   <div class="win">
     <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
-    <div class="whead"><span>CH7://01_ORIGIN</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
-    <div class="wbody"><div class="frame"><img class="base" src="images/chreis7-zurich.webp" alt="Born in Zürich. Built for everywhere." decoding="async"><img class="bloom" src="images/chreis7-zurich.webp" alt="" aria-hidden="true" decoding="async"><div class="patch p1"></div><div class="tint"></div><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div></div>
+    <div class="whead"><span>CH7://01_ABOUT</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
+    <div class="wbody about"><div class="frame"><img class="base" src="images/chreis7-zurich.webp" alt="Zürich at night" decoding="async"><img class="bloom" src="images/chreis7-zurich.webp" alt="" aria-hidden="true" decoding="async"><div class="patch p1"></div><div class="tint"></div><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div>
+      <div class="wtext">
+        <p class="k">CHREIS7 BY</p>
+        <h2>Hans X. Baer</h2>
+        <p>Born and raised in Zürich. A career in hospitality and luxury – always close to people, places and the moments in between.</p>
+        <p>CHREIS7 is where that perspective lives: every angle, one story.</p>
+        <blockquote>“Those who think in boundaries will always be defined by them. True growth comes from the connections we build beyond them.”</blockquote>
+      </div></div>
     <div class="wfoot"><span>ZRH · 47.37N 8.54E</span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
   </div>
 </div>
@@ -195,6 +218,20 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
     <div class="whead"><span>CH7://02_PERSPECTIVE</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
     <div class="wbody"><div class="frame"><img class="base" src="images/chreis7-story.webp" alt="One event. Every perspective. One story." decoding="async"><img class="bloom" src="images/chreis7-story.webp" alt="" aria-hidden="true" decoding="async"><div class="patch p2"></div><div class="tint"></div><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div></div>
     <div class="wfoot"><span>CH7 · PERSPECTIVE 02</span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
+  </div>
+</div>
+<div class="holo" id="w4" role="dialog" aria-modal="true" aria-label="Get in touch">
+  <div class="shade" data-close></div>
+  <div class="win">
+    <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
+    <div class="whead"><span>CH7://04_CONTACT</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
+    <div class="wbody"><div class="wtext contact">
+      <p class="k">GET IN TOUCH</p>
+      <h2>Let's talk.</h2>
+      <p>Collaborations, events, private evenings – or simply a conversation.</p>
+      <a class="mbtn mail" href="mailto:hans@mrbaer.ch?subject=CHREIS7"><b>@</b>hans@mrbaer.ch</a>
+    </div></div>
+    <div class="wfoot"><span>CH7 · CHANNEL OPEN</span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
   </div>
 </div>
 <script>
