@@ -7,9 +7,13 @@
 <meta name="description" content="CHREIS7 – One event. Every perspective. One story.">
 <meta name="theme-color" content="#030406">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Michroma&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Michroma';src:url(fonts/michroma-400.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(fonts/rajdhani-500.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(fonts/rajdhani-600.woff2) format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(fonts/rajdhani-700.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Bebas Neue';src:url(fonts/bebas-neue-400.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+</style>
 <style>
 :root{--glow:#1a7dff;--glow2:#3fa9ff;--bg:#030406;--panel:rgba(8,24,48,.45);--line:rgba(63,169,255,.35);--txt:#e9eef5;--mut:rgba(170,200,240,.6)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -207,7 +211,7 @@ input:focus{border-color:var(--glow2);box-shadow:0 0 12px rgba(26,125,255,.35)}
 </div>
 <div class="toast" id="toast"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="js/qrcode.js"></script>
 <script>
 (function(){
 'use strict';
