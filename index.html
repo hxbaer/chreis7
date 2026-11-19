@@ -197,7 +197,16 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
 .shards{position:absolute;inset:0;z-index:2;pointer-events:none}
 .shards .sh{position:absolute;left:var(--x);top:var(--y);transform:translate3d(var(--px,0px),var(--py,0px),0);transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .8s;opacity:0}
 .holo.open .shards .sh{opacity:var(--o)}
-.shards .sh i{display:block;width:var(--s);height:calc(var(--s)*1.9);clip-path:polygon(50% 0,100% 42%,50% 100%,0 42%);background:linear-gradient(160deg,#fff 0%,#cfe6ff 35%,rgba(63,169,255,.55) 70%,rgba(63,169,255,.1));filter:drop-shadow(0 0 4px rgba(150,205,255,.9));animation:drift var(--d) ease-in-out var(--dl) infinite;transform:rotate(var(--r))}
+.shards .sh i{position:relative;display:block;width:var(--s);height:calc(var(--s)*2.6);background:linear-gradient(118deg,#fff 0%,#f4f7fb 22%,#c9d3e0 48%,#8e9bb0 70%,rgba(220,230,245,.55) 100%);filter:drop-shadow(0 0 3px rgba(235,242,255,.8)) drop-shadow(0 0 8px rgba(180,205,240,.35));animation:drift var(--d) ease-in-out var(--dl) infinite;transform:rotate(var(--r))}
+.shards .sh i::after{content:"";position:absolute;left:48%;top:4%;bottom:6%;width:1px;background:linear-gradient(#fff,rgba(255,255,255,.35));transform:skewX(-8deg)}
+.shards .k1 i{clip-path:polygon(50% 0,74% 44%,50% 100%,28% 52%)}
+.shards .k2 i{clip-path:polygon(38% 0,100% 68%,8% 100%)}
+.shards .k3 i{clip-path:polygon(58% 0,82% 30%,44% 100%,22% 58%)}
+.shards .k4 i{clip-path:polygon(50% 0,96% 40%,52% 100%,4% 36%)}
+.shards .gl{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);opacity:0;animation:glint var(--d) ease-in-out var(--dl) infinite}
+.shards .gl::before,.shards .gl::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:linear-gradient(transparent,#fff 50%,transparent)}
+.shards .gl::after{transform:rotate(90deg)}
+@keyframes glint{0%,70%,100%{opacity:0;transform:scale(.3) rotate(0)}80%{opacity:1;transform:scale(1) rotate(20deg)}}
 .shards .sh.burst{transition:transform 1.4s cubic-bezier(.1,.9,.2,1)}
 @keyframes drift{0%,100%{transform:translate3d(0,0,0) rotate(var(--r))}50%{transform:translate3d(var(--dx),var(--dy),0) rotate(calc(var(--r) + 28deg))}}
 @media (prefers-reduced-motion:reduce){.shards .sh i{animation:none}}
@@ -306,12 +315,16 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
   var f=document.getElementById('bear');if(!f)return;var box=f.querySelector('.shards'),S=[],seed=11;
   function rnd(){seed=(seed*9301+49297)%233280;return seed/233280}
   /* shards cluster on the crystal (right) side and drift around the edges */
-  for(var k=0;k<22;k++){
-    var side=rnd(),x,y;
-    if(side<.6){x=52+rnd()*44;y=8+rnd()*72}else if(side<.8){x=4+rnd()*20;y=10+rnd()*60}else{x=20+rnd()*60;y=2+rnd()*12}
-    var e=document.createElement('span');e.className='sh';var dep=.4+rnd()*1.2;
-    e.style.cssText='--x:'+x+'%;--y:'+y+'%;--s:'+(3+rnd()*7).toFixed(1)+'px;--r:'+Math.round(rnd()*360)+'deg;--d:'+(5+rnd()*6).toFixed(1)+'s;--dl:-'+(rnd()*6).toFixed(1)+'s;--dx:'+((rnd()-.5)*18).toFixed(1)+'px;--dy:'+(-6-rnd()*14).toFixed(1)+'px;--o:'+(.55+rnd()*.45).toFixed(2)+';transition-delay:'+(k*35)+'ms';
+  function spot(){var x,y,t=rnd();
+    if(t<.55){x=60+rnd()*36;y=4+rnd()*78}else if(t<.75){x=2+rnd()*14;y=8+rnd()*62}else{x=16+rnd()*52;y=1+rnd()*13}
+    return [x,y]}
+  for(var k=0;k<20;k++){
+    var q=spot(),x=q[0],y=q[1],e=document.createElement('span'),dep=.4+rnd()*1.2;
+    e.className='sh k'+(1+Math.floor(rnd()*4));
+    e.style.cssText='--x:'+x+'%;--y:'+y+'%;--s:'+(3.5+rnd()*7.5).toFixed(1)+'px;--r:'+Math.round(rnd()*360)+'deg;--d:'+(6+rnd()*6).toFixed(1)+'s;--dl:-'+(rnd()*6).toFixed(1)+'s;--dx:'+((rnd()-.5)*16).toFixed(1)+'px;--dy:'+(-5-rnd()*12).toFixed(1)+'px;--o:'+(.6+rnd()*.4).toFixed(2)+';transition-delay:'+(k*35)+'ms';
     e.appendChild(document.createElement('i'));box.appendChild(e);S.push({e:e,x:x,y:y,dep:dep})}
+  for(k=0;k<9;k++){var g=spot(),gl=document.createElement('span');gl.className='gl';
+    gl.style.cssText='--x:'+g[0]+'%;--y:'+g[1]+'%;--s:'+(6+rnd()*8).toFixed(0)+'px;--d:'+(3+rnd()*4).toFixed(1)+'s;--dl:-'+(rnd()*5).toFixed(1)+'s';box.appendChild(gl)}
   function move(cx,cy,burst){var r=f.getBoundingClientRect(),mx=(cx-r.left)/r.width*100,my=(cy-r.top)/r.height*100;
     S.forEach(function(o){var dx=o.x-mx,dy=o.y-my,d=Math.hypot(dx,dy)||1,R=burst?60:34,push=Math.max(0,1-d/R)*(burst?70:26)*o.dep,
       par=burst?0:6*o.dep;o.e.classList.toggle('burst',!!burst);
