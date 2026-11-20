@@ -62,6 +62,14 @@ html.neon h2{color:#00e0d1}
 html.neon p,html.neon li{color:rgba(245,236,255,.9)}
 html.neon a{border-bottom-color:rgba(0,224,209,.4)}
 html.neon a.back{border-bottom:1px solid var(--line)}
+.lgw{position:relative;display:inline-flex;width:30px;height:30px;margin:0 6px}
+.lgw::before,.lgw::after{content:"";position:absolute;inset:-8px;border-radius:50%;pointer-events:none}
+.lgw::before{border:1px solid rgba(63,169,255,.22)}
+.lgw::after{border:2px solid transparent;border-top-color:#3fa9ff;border-right-color:rgba(63,169,255,.35);filter:drop-shadow(0 0 4px #1a7dff);animation:lgspin 4s linear infinite}
+@keyframes lgspin{to{transform:rotate(360deg)}}
+html.neon .lgw::before{border-color:rgba(255,110,199,.3)}
+html.neon .lgw::after{border-top-color:#00e0d1;border-right-color:rgba(255,110,199,.5);filter:drop-shadow(0 0 4px #00e0d1)}
+@media (prefers-reduced-motion:reduce){.lgw::after{animation:none}}
 </style>
 </head>
 <body>
@@ -69,7 +77,7 @@ html.neon a.back{border-bottom:1px solid var(--line)}
 <div class="wrap">
   <header>
     <a class="back" href="index.html" aria-label="Back to CHREIS7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Back</a>
-    <div class="brand"><svg class="lg" viewBox="0 0 520 525" aria-hidden="true"><use href="#ch7m"/></svg><b>CHREIS<span class="accent">7</span></b></div>
+    <div class="brand"><span class="lgw"><svg class="lg" viewBox="0 0 520 525" aria-hidden="true"><use href="#ch7m"/></svg></span><b>CHREIS<span class="accent">7</span></b></div>
     <div class="tag">LEGAL</div>
   </header>
 
