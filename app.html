@@ -45,7 +45,7 @@ html.neon .lgw::after{border-top-color:#00e0d1;border-right-color:rgba(255,110,1
 .back{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px 0 12px;border:1px solid var(--line);color:var(--mut);text-decoration:none;font:600 .74rem 'Rajdhani',sans-serif;letter-spacing:.28em;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:all .2s}
 .back svg{width:14px;height:14px}
 .back:hover{color:#fff;border-color:var(--glow2);background:rgba(var(--g1),.16);box-shadow:0 0 14px rgba(var(--g1),.35)}
-@media (max-width:700px){header{grid-template-columns:auto 1fr}header .brand{display:none}.back{padding:0 12px 0 8px;letter-spacing:.2em}header .evname{font-size:.62rem;letter-spacing:.2em}}
+@media (max-width:700px){header{grid-template-columns:1fr auto 1fr}header .brand b{display:none}header .brand{gap:0}header .back{justify-self:start}.back{padding:0 12px 0 8px;letter-spacing:.2em}header .evname{font-size:.62rem;letter-spacing:.2em}}
 .steps{display:flex;gap:8px;margin:18px 0 22px;flex-wrap:wrap}
 .step{flex:1;min-width:120px;background:none;border:1px solid var(--line);color:var(--mut);font:600 .78rem 'Rajdhani',sans-serif;letter-spacing:.28em;padding:12px 10px;cursor:pointer;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:all .2s}
 .step b{color:var(--glow2);margin-right:8px}
