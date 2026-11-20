@@ -244,7 +244,10 @@ body.holo-on .stage *,body.holo-on .stage *::before,body.holo-on .stage *::after
 .frame.matrix.done .mx-hint{opacity:1}
 @media (max-width:600px){.wfoot span:first-child{font-size:.5rem;letter-spacing:.16em}}
 .wtext.projects{width:min(460px,calc(92vw - 30px))}
-.pj{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.pj{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.wtext.projects h2{margin:10px 0 8px}
+.wtext p.pj-sub{font-style:italic;font-size:.98rem;line-height:1.45;color:rgba(var(--c4),.7);margin:0}
+html.neon .wtext p.pj-sub{color:rgba(255,190,225,.75)}
 .pjc{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"n t" "n d" "n u";column-gap:16px;row-gap:3px;align-items:center;padding:14px 16px;border:1px solid rgba(var(--c2),.4);background:rgba(var(--n5),.55);color:inherit;text-decoration:none;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:background .25s,border-color .25s,box-shadow .25s,transform .25s}
 .pjc .pn{grid-area:n;align-self:stretch;display:flex;align-items:center;padding-right:16px;border-right:1px solid rgba(var(--c2),.3);font:600 .66rem 'Rajdhani',sans-serif;letter-spacing:.24em;color:var(--glow2)}
 .pjc .pt{grid-area:t;font:400 .9rem 'Michroma',sans-serif;letter-spacing:.2em;color:#fff}
@@ -395,6 +398,7 @@ html.neon .modesw .sw::after{left:16px}
     <div class="wbody"><div class="wtext projects">
       <p class="k">PROJECTS</p>
       <h2>Beyond the circle.</h2>
+      <p class="pj-sub">Ideas that started here and took on a life of their own.</p>
       <div class="pj">
         <div class="pjc"><span class="pn">P/01</span><span class="pt">HANS BAER</span><span class="pd">Professional Profile</span><span class="pl"><a class="pu" href="https://www.hansbaer.ch" target="_blank" rel="noopener">www.hansbaer.ch <i>↗</i></a></span></div>
         <div class="pjc"><span class="pn">P/02</span><span class="pt">MR. B</span><span class="pd">Personal Brand</span><span class="pl"><a class="pu" href="https://www.mrbaer.ch" target="_blank" rel="noopener">www.mrbaer.ch <i>↗</i></a></span></div>
