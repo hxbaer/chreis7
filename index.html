@@ -260,6 +260,12 @@ html.neon .pjc .pd{color:rgba(240,232,255,.78)}
 html.neon .pjc .pu{color:#00e0d1}
 html.neon .pjc:hover,html.neon .pjc:focus-visible{border-color:#00e0d1;background:linear-gradient(90deg,rgba(255,62,154,.2),rgba(0,224,209,.12));box-shadow:0 0 18px rgba(255,62,154,.3)}
 @media (prefers-reduced-motion:reduce){.pjc,.pjc .pu i{transition:none}}
+.pjc .pl{grid-area:u;display:flex;flex-wrap:wrap;gap:4px 18px}
+.pjc a.pu{text-decoration:none;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.pjc a.pu:hover,.pjc a.pu:focus-visible{outline:none;color:#fff;border-bottom-color:var(--glow2)}
+.pjc a.pu:hover i,.pjc a.pu:focus-visible i{transform:translate(3px,-3px)}
+html.neon .pjc a.pu:hover,html.neon .pjc a.pu:focus-visible{border-bottom-color:#00e0d1}
+.pjc:hover{transform:none}
 /* ===== NEON mode (test) – Vice City: cobalt > purple > hot pink > orange, teal accent ===== */
 html.neon{--c1:255,62,154;--c2:255,110,199;--c3:255,196,176;--c4:255,232,220;--n1:62,20,96;--n2:44,14,78;--n3:24,8,52;--n4:16,6,40;--n5:34,12,66;--t1:#ffe0ef;--t2:#ffb9d9;--t3:#fff3f8;--tA:#3b2bb0;--tB:#8a1f86;--tC:#2a0c4a;--glow:#ff3e9a;--glow2:#00e0d1;--bf:#00e0d1;--bg:#120a2e;--teal:0,224,209}
 html.neon body{background:linear-gradient(180deg,#14206e 0%,#2b1a80 22%,#5a1f8f 44%,#a0238a 62%,#e0407a 74%,#ff7a4a 84%,#ffb347 92%,#3a1240 92.5%,#1a0a2e 100%)}
@@ -390,8 +396,9 @@ html.neon .modesw .sw::after{left:16px}
       <p class="k">PROJECTS</p>
       <h2>Beyond the circle.</h2>
       <div class="pj">
-        <a class="pjc" href="https://www.mrbaer.ch" target="_blank" rel="noopener"><span class="pn">P/01</span><span class="pt">MR. BAER</span><span class="pd">Personal website</span><span class="pu">www.mrbaer.ch <i>↗</i></span></a>
-        <a class="pjc" href="https://www.maisonbaer.ch" target="_blank" rel="noopener"><span class="pn">P/02</span><span class="pt">MAISON BAER</span><span class="pd">Private dinner club</span><span class="pu">www.maisonbaer.ch <i>↗</i></span></a>
+        <div class="pjc"><span class="pn">P/01</span><span class="pt">HANS BAER</span><span class="pd">Personal Website</span><span class="pl"><a class="pu" href="https://www.hansbaer.ch" target="_blank" rel="noopener">www.hansbaer.ch <i>↗</i></a><a class="pu" href="https://www.hansbaer.com" target="_blank" rel="noopener">www.hansbaer.com <i>↗</i></a></span></div>
+        <div class="pjc"><span class="pn">P/02</span><span class="pt">MR. B</span><span class="pd">Personal Brand</span><span class="pl"><a class="pu" href="https://www.mrbaer.ch" target="_blank" rel="noopener">www.mrbaer.ch <i>↗</i></a><a class="pu" href="https://www.mrbaer.com" target="_blank" rel="noopener">www.mrbaer.com <i>↗</i></a></span></div>
+        <div class="pjc"><span class="pn">P/03</span><span class="pt">MAISON BAER</span><span class="pd">Private Dinner Club</span><span class="pl"><a class="pu" href="https://www.maisonbaer.ch" target="_blank" rel="noopener">www.maisonbaer.ch <i>↗</i></a></span></div>
       </div>
     </div></div>
     <div class="wfoot"><span><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">MIA · 25.76N 80.19W</em></span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
