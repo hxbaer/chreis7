@@ -288,7 +288,7 @@ html.neon .modesw .sw::after{left:16px}
   <span class="br">FULL CIRCLE</span>
 </div>
 <a class="legal" href="impressum.html">LEGAL</a>
-<button class="modesw" id="modesw" type="button" aria-pressed="false" title="Switch colour mode"><span class="sw" aria-hidden="true"></span><span class="lbl">NIGHT</span></button>
+<button class="modesw" id="modesw" type="button" aria-pressed="false" title="Switch colour mode"><span class="sw" aria-hidden="true"></span><span class="lbl">ZRH</span></button>
 <div class="stage">
 <main>
   <div class="core" id="core" role="button" tabindex="0" aria-label="Logo in 3D drehen">
@@ -506,7 +506,7 @@ html.neon .modesw .sw::after{left:16px}
 <script>
 (function(){
   var b=document.getElementById('modesw'),h=document.documentElement;if(!b)return;
-  function set(on,save){h.classList.toggle('neon',on);b.setAttribute('aria-pressed',on);b.querySelector('.lbl').textContent=on?'VICE':'NIGHT';
+  function set(on,save){h.classList.toggle('neon',on);b.setAttribute('aria-pressed',on);b.querySelector('.lbl').textContent=on?'VICE':'ZRH';
     if(save){try{localStorage.setItem('ch7mode',on?'neon':'night')}catch(e){}}document.dispatchEvent(new Event('ch7theme'))}
   var st=null;try{st=localStorage.getItem('ch7mode')}catch(e){}
   if(st==='neon')set(true,false);
