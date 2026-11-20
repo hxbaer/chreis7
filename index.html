@@ -270,7 +270,25 @@ html.neon .ring.r3{border-top-color:#00e0d1;border-right-color:rgba(255,110,199,
 html.neon .mbtn{border-color:rgba(0,224,209,.6);background:linear-gradient(90deg,rgba(43,26,128,.55),rgba(160,35,138,.4));box-shadow:0 0 14px rgba(0,224,209,.18)}
 html.neon .mbtn b{color:#00e0d1}
 html.neon .mbtn:hover,html.neon .mbtn:focus-visible{background:rgba(0,224,209,.18);box-shadow:0 0 24px rgba(0,224,209,.55),inset 0 0 14px rgba(255,62,154,.3)}
-html.neon .win{background:linear-gradient(180deg,rgba(30,20,100,.9),rgba(70,20,110,.88) 60%,rgba(120,25,100,.86))}
+html.neon .shade{background:rgba(16,6,42,.8)}
+html.neon .win{border-color:rgba(0,224,209,.7);background:linear-gradient(180deg,rgba(20,14,70,.94),rgba(36,12,74,.94) 70%,rgba(64,14,78,.94));box-shadow:0 0 0 1px rgba(255,62,154,.25),0 0 46px rgba(255,62,154,.35),0 0 90px rgba(0,224,209,.12)}
+html.neon .win .c{border-color:#00e0d1;filter:drop-shadow(0 0 6px rgba(0,224,209,.9))}
+html.neon .whead{border-bottom-color:rgba(0,224,209,.35);color:#00e0d1}
+html.neon .whead .x{border-color:rgba(255,110,199,.6);color:#ffd0ea}
+html.neon .whead .x:hover{background:rgba(255,62,154,.35)}
+html.neon .wtext .k,html.neon .cf .fld>span,html.neon .cf legend{color:#ff6ec7}
+html.neon .wtext h2{color:#fff;text-shadow:0 0 12px rgba(255,62,154,.6)}
+html.neon .wtext p{color:rgba(240,232,255,.9)}
+html.neon .wtext .tags{color:#00e0d1;text-shadow:0 0 8px rgba(0,224,209,.45)}
+html.neon .wtext .sig{color:rgba(255,190,225,.65)}
+html.neon .wtext blockquote{border-left-color:#ff6ec7;color:#ffe0ef}
+html.neon .frame{border-color:rgba(0,224,209,.4)}
+html.neon .wfoot{color:rgba(255,190,225,.6)}
+html.neon .wfoot .bars i{background:#ff6ec7;box-shadow:0 0 5px #ff3e9a}
+html.neon .cf input[type=text],html.neon .cf input[type=email],html.neon .cf textarea{background:rgba(14,8,46,.8);border-color:rgba(0,224,209,.35);color:#fff}
+html.neon .cf input:focus,html.neon .cf textarea:focus{border-color:#00e0d1;box-shadow:0 0 0 1px rgba(0,224,209,.4),0 0 16px rgba(255,62,154,.3)}
+html.neon .cf-done{border-color:rgba(0,224,209,.5);background:rgba(0,224,209,.08)}
+html.neon .cf-done .k{color:#00e0d1!important}
 body,.hud i,.mbtn,.win,.whead,.wfoot,.accent{transition:background-color .6s,border-color .6s,color .6s}
 .hud .bl{display:none}
 .modesw{position:fixed;z-index:6;left:80px;bottom:30px;background:none;border:0;padding:6px 4px;font:600 .68rem 'Rajdhani',sans-serif;letter-spacing:.35em;color:rgba(var(--c3),.6);cursor:pointer;display:flex;align-items:center;gap:10px}
@@ -329,7 +347,7 @@ html.neon .modesw .sw::after{left:16px}
         <p class="tags">INTERACTIVE · MOTION · VISUAL · CODE</p>
         <p class="sig">Created in Zürich by Ensifirus</p>
       </div></div>
-    <div class="wfoot"><span>ZRH · 47.37N 8.54E</span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
+    <div class="wfoot"><span><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">VICE · 25.76N 80.19W</em></span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
   </div>
 </div>
 <div class="holo" id="w2" role="dialog" aria-modal="true" aria-label="Perspective – Zürich, rebuilt in code">
