@@ -146,9 +146,9 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
 @media (max-width:360px){.hud span{font-size:.48rem;letter-spacing:.16em}}
 @media (max-width:420px){.menu{gap:10px}.mbtn{padding:10px 14px 10px 12px;font-size:.66rem;letter-spacing:.2em}.mbtn b{margin-right:8px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
-.legal{position:fixed;left:50%;bottom:36px;transform:translateX(-50%);z-index:6;font-size:.62rem;letter-spacing:.35em;margin-right:-.35em;color:rgba(var(--c3),.4);font-weight:600;text-decoration:none;padding:6px 4px;transition:color .25s,text-shadow .25s}
+.legal{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);z-index:6;font-size:.68rem;letter-spacing:.35em;margin-right:-.35em;color:rgba(var(--c3),.4);font-weight:600;text-decoration:none;padding:6px 4px;transition:color .25s,text-shadow .25s}
 .legal:hover,.legal:focus-visible{color:var(--t1);text-shadow:0 0 10px rgba(var(--c2),.7);outline:none}
-@media (max-width:600px){.legal{bottom:max(15px,calc(env(safe-area-inset-bottom) + 3px));font-size:.5rem;letter-spacing:.22em;margin-right:-.22em}}
+@media (max-width:600px){.legal{bottom:max(14px,calc(env(safe-area-inset-bottom) + 2px));font-size:.54rem;letter-spacing:.22em;margin-right:-.22em}}
 @media (max-width:360px){.legal{font-size:.46rem;letter-spacing:.14em}}
 /* ===== text windows ===== */
 .wbody{max-height:calc(88vh - 96px);overflow:auto;-webkit-overflow-scrolling:touch}
@@ -263,7 +263,7 @@ html.neon .grid::before{background-image:linear-gradient(rgba(0,224,209,.55) 1px
 html.neon .grid{background:linear-gradient(180deg,rgba(26,10,46,.0),rgba(26,10,46,.9) 30%)}
 html.neon .hud i:nth-child(1),html.neon .hud i:nth-child(2){border-color:#00e0d1;filter:drop-shadow(0 0 6px rgba(0,224,209,.8))}
 html.neon .hud i:nth-child(3),html.neon .hud i:nth-child(4){border-color:#ff6ec7;filter:drop-shadow(0 0 6px rgba(255,110,199,.8))}
-.loc-z,.loc-v{font-style:normal;white-space:nowrap}.loc-v{display:none}html.neon .loc-z{display:none}html.neon .loc-v{display:inline}
+.loc-z,.loc-v,.clk{font-style:normal;white-space:nowrap}.clk{font-variant-numeric:tabular-nums}.loc-v{display:none}html.neon .loc-z{display:none}html.neon .loc-v{display:inline}
 html.neon .hud span{color:#ffe0ef}
 html.neon .spinz svg.aperture,html.neon .spinz svg.backf{--bf:#00e0d1}html.neon .spinz svg.lyr{--wf:#4a2a6e;--bf:#00837a}
 html.neon .ring.r3{border-top-color:#00e0d1;border-right-color:rgba(255,110,199,.5);filter:drop-shadow(0 0 6px #00e0d1)}
@@ -305,7 +305,7 @@ html.neon .modesw .sw::after{left:16px}
 <div class="grid" aria-hidden="true"></div>
 <div class="hud" aria-hidden="true">
   <i></i><i></i><i></i><i></i>
-  <span class="tl"><b class="dot"></b>SYSTEM ONLINE</span>
+  <span class="tl"><b class="dot"></b>LOCAL TIME <em class="clk" id="clk">--:--:--</em></span>
   <span class="tr"><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">VICE · 25.76N 80.19W</em></span>
   <span class="bl">CH7 // v1.0</span>
   <span class="br">FULL CIRCLE</span>
@@ -535,6 +535,12 @@ html.neon .modesw .sw::after{left:16px}
   if(st==='neon')set(true,false);
   b.addEventListener('click',function(){set(!h.classList.contains('neon'),true)});
 })();
+</script>
+<script>
+(function(){var el=document.getElementById('clk');if(!el)return;var f={};
+function fmt(tz){return f[tz]||(f[tz]=new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}))}
+function tick(){var tz=document.documentElement.classList.contains('neon')?'America/New_York':'Europe/Zurich';try{el.textContent=fmt(tz).format(new Date())}catch(e){}}
+tick();setInterval(tick,1000);document.addEventListener('ch7theme',tick)})();
 </script>
 </body>
 </html>
