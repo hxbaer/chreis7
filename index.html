@@ -284,6 +284,10 @@ html.neon .wtext p{color:rgba(240,232,255,.9)}
 html.neon .wtext .tags{color:#00e0d1;text-shadow:0 0 8px rgba(0,224,209,.45)}
 html.neon .wtext .sig{color:rgba(255,190,225,.65)}
 html.neon .wtext blockquote{border-left-color:#ff6ec7;color:#ffe0ef}
+.frame .miaimg{display:none}
+html.neon .frame .miaimg{display:block;position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;z-index:1;background:none;filter:none}
+html.neon .bear .shards,html.neon .bear .bloom,html.neon .bear .tint{display:none}
+html.neon .frame .vig{box-shadow:inset 0 0 50px 10px rgba(20,6,46,.55)}
 html.neon .frame{border-color:rgba(0,224,209,.4)}
 html.neon .wfoot{color:rgba(255,190,225,.6)}
 html.neon .wfoot .bars i{background:#ff6ec7;box-shadow:0 0 5px #ff3e9a}
@@ -340,7 +344,7 @@ html.neon .modesw .sw::after{left:16px}
   <div class="win">
     <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
     <div class="whead"><span>CH7://01_ABOUT</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
-    <div class="wbody about"><div class="frame bear" id="bear"><img class="base" src="images/chreis7-about.webp" width="660" height="874" alt="Portrait of Ensifirus, half his face turning into a crystal bear" decoding="async"><img class="bloom" src="images/chreis7-about.webp" alt="" aria-hidden="true" decoding="async"><div class="tint"></div><div class="shards" aria-hidden="true"></div><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div>
+    <div class="wbody about"><div class="frame bear" id="bear"><img class="base" src="images/chreis7-about.webp" width="660" height="874" alt="Portrait of Ensifirus, half his face turning into a crystal bear" decoding="async"><img class="bloom" src="images/chreis7-about.webp" alt="" aria-hidden="true" decoding="async"><div class="tint"></div><div class="shards" aria-hidden="true"></div><img class="miaimg" src="images/chreis7-about-mia.webp" width="660" height="874" alt="Neon portrait of Ensifirus in front of Miami palm trees" loading="lazy" decoding="async"><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div>
       <div class="wtext">
         <p class="k">ABOUT CHREIS7</p>
         <h2>Built to be explored.</h2>
