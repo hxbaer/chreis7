@@ -25,7 +25,7 @@ header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12
 header .brand{justify-self:center}
 header .tag{justify-self:end;font-size:.72rem;letter-spacing:.3em;color:var(--mut);text-align:right}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:30px;height:30px;filter:drop-shadow(0 0 6px rgba(63,169,255,.6))}
+.brand .lg{width:30px;height:30px;--wf:#fff;--bf:#1a7dff;filter:drop-shadow(0 0 6px rgba(63,169,255,.6))}
 .brand b{font-family:'Michroma',sans-serif;font-weight:400;font-size:.95rem;letter-spacing:.3em}
 .accent{color:var(--glow2);text-shadow:0 0 10px var(--glow)}
 .back{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px 0 12px;border:1px solid var(--line);color:var(--mut);text-decoration:none;font:600 .74rem 'Rajdhani',sans-serif;letter-spacing:.28em;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:all .2s;justify-self:start}
@@ -51,7 +51,7 @@ a.back{border-bottom:1px solid var(--line)}
 html.neon{--glow:#ff3e9a;--glow2:#00e0d1;--bg:#140a30;--line:rgba(0,224,209,.38);--txt:#fff3f8;--mut:rgba(255,190,225,.65)}
 html.neon,html.neon body{background:linear-gradient(180deg,#14206e 0%,#2b1a80 35%,#4a1a80 65%,#6a1a6e 100%) fixed}
 html.neon body::before{background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px),radial-gradient(ellipse 90% 40% at 50% 105%,rgba(255,122,74,.35),rgba(255,62,154,.15) 50%,transparent 75%)}
-html.neon .brand img{filter:drop-shadow(0 0 6px rgba(0,224,209,.6))}
+html.neon .brand .lg{--bf:#00e0d1;filter:drop-shadow(0 0 7px rgba(255,62,154,.55))}
 html.neon .brand b{text-shadow:0 0 12px rgba(255,62,154,.6)}
 html.neon .accent{color:#00e0d1;text-shadow:0 0 10px rgba(0,224,209,.7)}
 html.neon .back:hover{background:rgba(0,224,209,.16);box-shadow:0 0 14px rgba(0,224,209,.4)}
@@ -65,10 +65,11 @@ html.neon a.back{border-bottom:1px solid var(--line)}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ch7m" viewBox="0 0 520 525"><path style="fill:var(--wf,#fff)" fill-rule="evenodd" d="M240.5 515.3C233.2 514.6 218.8 512.1 218.3 511.6C217.7 511.1 224.8 500.7 259.9 450.5C273.3 431.2 291.4 405.4 300.0 393.0C317.9 367.2 353.4 316.2 363.5 301.7C367.3 296.3 370.6 292.3 371.0 292.7C372.3 294.1 431.2 442.2 431.3 444.4C431.5 446.8 421.5 456.5 408.7 466.2C376.6 490.7 337.9 507.4 299.5 513.6C289.8 515.1 249.5 516.3 240.5 515.3ZM139.0 481.9C91.2 454.1 51.9 408.9 31.5 358.0C27.3 347.5 20.6 327.0 21.2 326.4C21.6 326.2 110.6 351.0 202.8 377.1L221.1 382.3L219.3 384.9C218.4 386.3 207.1 403.7 194.2 423.5C153.8 485.5 152.1 488.0 150.8 488.0C150.1 488.0 144.8 485.3 139.0 481.9ZM448.0 423.3C446.1 418.3 434.0 387.4 420.2 352.5C396.8 293.1 387.0 267.8 387.0 266.4C387.0 265.7 397.6 249.1 410.7 229.6L434.3 194.0L466.1 194.0L497.9 194.0L499.5 199.2C508.1 228.0 510.8 269.5 506.1 300.5C499.7 342.8 484.0 380.4 457.9 415.6C449.9 426.5 449.3 427.0 448.0 423.3ZM140.0 335.5C123.8 330.9 89.2 321.3 63.1 314.1C37.0 306.9 15.6 300.9 15.4 300.8C15.3 300.6 14.6 294.4 14.0 287.1C9.9 242.7 18.9 195.5 39.5 153.5C46.6 138.9 61.3 115.5 68.2 107.6L71.6 103.7L77.2 117.1C80.3 124.5 91.3 151.0 101.8 176.0C135.7 257.3 171.0 342.8 171.0 343.7C171.0 344.2 169.9 344.0 140.0 335.5ZM143.7 218.2C141.7 213.4 136.7 201.4 132.5 191.5C121.0 164.6 107.9 133.3 97.3 107.5L87.8 84.6L93.1 79.8C138.7 38.9 187.6 17.4 245.5 13.0C258.2 12.0 286.2 12.9 287.6 14.3C288.1 14.8 277.8 30.7 243.6 82.4C220.9 116.8 200.0 148.6 170.3 193.7C158.3 212.0 148.2 227.0 147.9 227.0C147.5 227.0 145.6 223.1 143.7 218.2Z"/><path style="fill:var(--wf,#fff)" d="M214.6 168.8C216.0 166.3 257.1 103.2 273.2 78.8C282.2 65.2 294.8 46.0 301.2 36.1L313.0 18.1L322.2 20.6C378.7 35.7 436.5 79.3 469.2 131.5C476.3 142.8 486.9 162.8 488.4 167.8L489.1 170.0L351.5 170.0C241.7 170.0 214.0 169.7 214.6 168.8Z"/><path style="fill:var(--bf,#1a7dff)" d="M185.0 467.5C187.8 462.8 240.8 380.0 250.1 365.7C253.6 360.3 275.9 326.8 299.6 291.2L342.7 226.5L260.9 226.0C216.0 225.7 178.9 225.2 178.5 224.8C178.1 224.5 182.3 217.5 187.7 209.3L197.5 194.5L298.7 194.2C354.3 194.1 400.7 194.3 401.7 194.7C403.4 195.4 400.2 200.2 376.3 233.5C327.6 301.1 297.3 343.2 269.5 382.5C241.9 421.5 242.8 420.2 239.5 423.0C237.9 424.4 226.0 434.5 213.2 445.5C200.3 456.5 188.2 466.9 186.2 468.5L182.6 471.5L185.0 467.5Z"/></symbol></defs></svg>
 <div class="wrap">
   <header>
     <a class="back" href="index.html" aria-label="Back to CHREIS7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Back</a>
-    <div class="brand"><img src="favicon.svg" alt=""><b>CHREIS<span class="accent">7</span></b></div>
+    <div class="brand"><svg class="lg" viewBox="0 0 520 525" aria-hidden="true"><use href="#ch7m"/></svg><b>CHREIS<span class="accent">7</span></b></div>
     <div class="tag">LEGAL</div>
   </header>
 
