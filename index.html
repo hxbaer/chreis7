@@ -264,6 +264,7 @@ html.neon .grid{background:linear-gradient(180deg,rgba(26,10,46,.0),rgba(26,10,4
 html.neon .hud i:nth-child(1),html.neon .hud i:nth-child(2){border-color:#00e0d1;filter:drop-shadow(0 0 6px rgba(0,224,209,.8))}
 html.neon .hud i:nth-child(3),html.neon .hud i:nth-child(4){border-color:#ff6ec7;filter:drop-shadow(0 0 6px rgba(255,110,199,.8))}
 .loc-z,.loc-v,.clk{font-style:normal;white-space:nowrap}.clk{font-variant-numeric:tabular-nums}.loc-v{display:none}html.neon .loc-z{display:none}html.neon .loc-v{display:inline}
+html.neon .modesw,html.neon .legal,html.neon .hud .br{color:#fff}
 html.neon .hud span{color:#ffe0ef}
 html.neon .spinz svg.aperture,html.neon .spinz svg.backf{--bf:#00e0d1}html.neon .spinz svg.lyr{--wf:#4a2a6e;--bf:#00837a}
 html.neon .ring.r3{border-top-color:#00e0d1;border-right-color:rgba(255,110,199,.5);filter:drop-shadow(0 0 6px #00e0d1)}
@@ -307,7 +308,7 @@ html.neon .modesw .sw::after{left:16px}
 <div class="hud" aria-hidden="true">
   <i></i><i></i><i></i><i></i>
   <span class="tl"><b class="dot"></b>LOCAL TIME <em class="clk" id="clk">--:--:--</em></span>
-  <span class="tr"><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">VICE · 25.76N 80.19W</em></span>
+  <span class="tr"><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">MIA · 25.76N 80.19W</em></span>
   <span class="bl">CH7 // v1.0</span>
   <span class="br">FULL CIRCLE</span>
 </div>
@@ -348,7 +349,7 @@ html.neon .modesw .sw::after{left:16px}
         <p class="tags">INTERACTIVE · MOTION · VISUAL · CODE</p>
         <p class="sig">Created in Zürich by Ensifirus</p>
       </div></div>
-    <div class="wfoot"><span><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">VICE · 25.76N 80.19W</em></span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
+    <div class="wfoot"><span><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">MIA · 25.76N 80.19W</em></span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
   </div>
 </div>
 <div class="holo" id="w2" role="dialog" aria-modal="true" aria-label="Perspective – Zürich, rebuilt in code">
@@ -530,7 +531,7 @@ html.neon .modesw .sw::after{left:16px}
 <script>
 (function(){
   var b=document.getElementById('modesw'),h=document.documentElement;if(!b)return;
-  function set(on,save){h.classList.toggle('neon',on);b.setAttribute('aria-pressed',on);b.querySelector('.lbl').textContent=on?'VICE':'ZRH';
+  function set(on,save){h.classList.toggle('neon',on);b.setAttribute('aria-pressed',on);b.querySelector('.lbl').textContent=on?'MIA':'ZRH';
     if(save){try{localStorage.setItem('ch7mode',on?'neon':'night')}catch(e){}}document.dispatchEvent(new Event('ch7theme'))}
   var st=null;try{st=localStorage.getItem('ch7mode')}catch(e){}
   if(st==='neon')set(true,false);
