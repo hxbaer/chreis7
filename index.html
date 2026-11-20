@@ -303,6 +303,47 @@ body,.hud i,.mbtn,.win,.whead,.wfoot,.accent{transition:background-color .6s,bor
 .modesw .sw::after{content:"";position:absolute;top:2px;left:2px;width:6px;height:6px;border-radius:50%;background:var(--glow2);box-shadow:0 0 6px var(--glow2);transition:left .35s}
 html.neon .modesw .sw::after{left:16px}
 @media (max-width:600px){.modesw{left:46px;bottom:max(14px,calc(env(safe-area-inset-bottom) + 2px));font-size:.54rem;letter-spacing:.22em;gap:7px}.modesw .sw{width:20px;height:10px}.modesw .sw::after{width:4px;height:4px}html.neon .modesw .sw::after{left:12px}}
+
+/* ===== MIA deck (music preview) ===== */
+.deck{position:fixed;z-index:7;right:58px;bottom:96px;display:none;align-items:flex-end;gap:14px;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+html.neon .deck{display:flex}
+html.neon .deck.in{opacity:1;transform:none}
+.deck .scr{position:relative;width:200px;height:200px;border:1px solid rgba(0,224,209,.7);background:#0d0624;box-shadow:0 0 0 1px rgba(255,62,154,.25),0 0 24px rgba(255,62,154,.3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;font:600 .58rem 'Rajdhani',sans-serif;letter-spacing:.25em;color:rgba(255,190,225,.75);text-align:center}
+.deck .scr::before,.deck .scr::after{content:"";position:absolute;width:12px;height:12px;border:2px solid #00e0d1}
+.deck .scr::before{top:-5px;left:-5px;border-right:0;border-bottom:0}.deck .scr::after{bottom:-5px;right:-5px;border-left:0;border-top:0}
+.deck .scr .yt{width:46px;height:32px;border-radius:9px;background:#ff3e9a;position:relative;opacity:.85}
+.deck .scr .yt::after{content:"";position:absolute;left:18px;top:9px;border-left:13px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.deck .scr .x{display:none;position:absolute;top:4px;right:6px;background:none;border:0;color:#fff;font-size:.9rem;cursor:pointer}
+.deck .scr small{font-size:.5rem;letter-spacing:.2em;opacity:.6}
+.deck .tt{position:relative;width:150px;height:150px;flex:none}
+.deck .plinth{position:absolute;inset:0;border:1px solid rgba(0,224,209,.55);background:linear-gradient(160deg,rgba(30,20,100,.9),rgba(64,14,78,.9));box-shadow:0 0 22px rgba(255,62,154,.3)}
+.deck .vinyl{position:absolute;left:12px;top:12px;width:116px;height:116px;border-radius:50%;cursor:pointer;border:0;padding:0;background:repeating-radial-gradient(circle at 50% 50%,#120818 0 1.2px,#1d0f2a 1.2px 2.6px);box-shadow:0 0 0 2px #0a0412,0 4px 14px rgba(0,0,0,.6);animation:vspin 1.8s linear infinite;animation-play-state:paused}
+.deck .vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent 0 8%,rgba(255,62,154,.35) 12%,transparent 18% 50%,rgba(0,224,209,.35) 62%,transparent 68%);mix-blend-mode:screen}
+.deck .vinyl .lab{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:radial-gradient(circle,#140726 0 3px,#ff3e9a 3.5px 100%);display:flex;align-items:center;justify-content:center}
+.deck .vinyl .lab svg{width:24px;height:24px;--wf:#fff;--bf:#00e0d1}
+.deck.on .vinyl{animation-play-state:running}
+.deck .arm{position:absolute;right:10px;top:10px;width:4px;height:84px;background:linear-gradient(#e8e8f0,#9aa0b5);border-radius:2px;transform-origin:2px 4px;transform:rotate(-8deg);transition:transform .9s cubic-bezier(.3,.7,.2,1)}
+.deck .arm::before{content:"";position:absolute;left:-5px;top:-5px;width:14px;height:14px;border-radius:50%;background:#2a0f45;border:2px solid #00e0d1}
+.deck .arm::after{content:"";position:absolute;left:-3px;bottom:-6px;width:10px;height:12px;background:#00e0d1;border-radius:2px;box-shadow:0 0 6px #00e0d1}
+.deck.on .arm{transform:rotate(24deg)}
+.deck .np{position:absolute;left:0;right:0;top:-18px;overflow:hidden;white-space:nowrap;font:600 .56rem 'Rajdhani',sans-serif;letter-spacing:.24em;color:#fff}
+.deck .np span{display:inline-block;padding-left:100%;animation:npm 12s linear infinite}
+.deck .led{position:absolute;left:8px;bottom:8px;width:6px;height:6px;border-radius:50%;background:#4a2a6e}
+.deck.on .led{background:#00e0d1;box-shadow:0 0 6px #00e0d1}
+.deck .mute{position:absolute;right:8px;bottom:6px;background:none;border:0;color:#fff;font:600 .5rem 'Rajdhani',sans-serif;letter-spacing:.2em;cursor:pointer;padding:2px}
+@keyframes vspin{to{transform:rotate(360deg)}}
+@keyframes npm{to{transform:translateX(-100%)}}
+.ask{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(16,6,42,.55)}
+.ask.show{display:flex}
+.ask .box{width:min(340px,88vw);padding:20px 20px 18px;border:1px solid rgba(0,224,209,.7);background:linear-gradient(180deg,rgba(20,14,70,.96),rgba(64,14,78,.96));box-shadow:0 0 40px rgba(255,62,154,.35);text-align:center}
+.ask .k{font:600 .62rem 'Rajdhani',sans-serif;letter-spacing:.32em;color:#ff6ec7}
+.ask h3{font:400 .95rem 'Michroma',sans-serif;letter-spacing:.18em;color:#fff;margin:10px 0;text-shadow:0 0 12px rgba(255,62,154,.6)}
+.ask p{font:500 .9rem/1.45 'Rajdhani',sans-serif;color:rgba(240,232,255,.85);margin-bottom:16px}
+.ask .row{display:flex;gap:10px;justify-content:center}
+.ask button{flex:1;min-height:40px;border:1px solid #00e0d1;background:linear-gradient(90deg,rgba(255,62,154,.4),rgba(0,224,209,.22));color:#fff;font:600 .7rem 'Rajdhani',sans-serif;letter-spacing:.24em;cursor:pointer}
+.ask button.no{background:none;border-color:rgba(255,190,225,.4);color:rgba(255,190,225,.85)}
+@media (max-width:900px){.deck{right:14px;bottom:auto;top:72px}html.neon .deck.in{transform:none}.deck .scr{display:none;position:fixed;left:50%;bottom:64px;transform:translateX(-50%);z-index:8}.deck.open.on .scr{display:flex}.deck .tt{width:92px;height:92px}.deck .vinyl{left:7px;top:7px;width:70px;height:70px}.deck .vinyl .lab{width:26px;height:26px;margin:-13px 0 0 -13px}.deck .vinyl .lab svg{width:16px;height:16px}.deck .arm{height:50px;right:6px;top:6px}.deck .mute{display:none}.deck .np{display:none}.deck .scr .x{display:block}}
+@media (prefers-reduced-motion:reduce){.deck .vinyl,.deck .np span{animation:none!important}}
 </style>
 </head>
 <body>
@@ -547,6 +588,28 @@ html.neon .modesw .sw::after{left:16px}
 function fmt(tz){return f[tz]||(f[tz]=new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}))}
 function tick(){var tz=document.documentElement.classList.contains('neon')?'America/New_York':'Europe/Zurich';try{el.textContent=fmt(tz).format(new Date())}catch(e){}}
 tick();setInterval(tick,1000);document.addEventListener('ch7theme',tick)})();
+</script>
+<div class="deck" id="deck" aria-label="Music">
+  <div class="scr" id="scr"><i class="yt"></i>YOUTUBE PLAYER<small>PREVIEW · 200×200</small><button class="x" id="scrx" aria-label="Close player">✕</button></div>
+  <div class="tt"><div class="plinth"></div><button class="vinyl" id="vinyl" aria-label="Play / pause music"><span class="lab"><svg viewBox="0 0 520 525" aria-hidden="true"><use href="#ch7m"/></svg></span></button><i class="arm"></i><i class="led"></i><button class="mute" id="vmute">STOP</button>
+  <div class="np"><span>NOW PLAYING · ARMAND VAN HELDEN – I WANT YOUR SOUL · </span></div></div>
+</div>
+<div class="ask" id="ask" role="dialog" aria-modal="true" aria-label="Music"><div class="box"><p class="k">MIA · SOUND</p><h3>With music?</h3><p>Plays “I Want Your Soul” by Armand Van Helden via YouTube. Loading the player connects to Google.</p><div class="row"><button class="no" id="askNo">Without</button><button id="askYes">With music</button></div></div></div>
+<script>
+(function(){var h=document.documentElement,d=document.getElementById('deck'),ask=document.getElementById('ask'),K='ch7music';
+function get(){try{return localStorage.getItem(K)}catch(e){return null}}function put(v){try{localStorage.setItem(K,v)}catch(e){}}
+/* preview: fake player. Later: YouTube IFrame API (loaded only after consent) */
+var P={play:function(){d.classList.add('on')},pause:function(){d.classList.remove('on')}};
+function show(){d.style.display='';requestAnimationFrame(function(){d.classList.add('in')})}
+function enter(){show();var c=get();if(c==='yes'){P.play()}else if(c===null){ask.classList.add('show')}}
+function leave(){P.pause();d.classList.remove('in');ask.classList.remove('show')}
+document.getElementById('askYes').onclick=function(){put('yes');ask.classList.remove('show');d.classList.add('open');P.play()};
+document.getElementById('askNo').onclick=function(){put('no');ask.classList.remove('show')};
+document.getElementById('vinyl').onclick=function(){if(get()!=='yes'){ask.classList.add('show');return}d.classList.add('open');d.classList.contains('on')?P.pause():P.play()};
+document.getElementById('vmute').onclick=function(){P.pause()};document.getElementById('scrx').onclick=function(){P.pause()};
+document.getElementById('modesw').addEventListener('click',function(){setTimeout(function(){h.classList.contains('neon')?enter():leave()},0)});
+if(h.classList.contains('neon'))show();
+})();
 </script>
 </body>
 </html>
