@@ -167,15 +167,18 @@ h1{font-family:'Michroma','Eurostile',Arial,sans-serif;font-weight:400;font-size
 .wtext .tags{margin-top:18px;font-size:.68rem;letter-spacing:.3em;color:var(--glow2);font-weight:600}
 .wtext .sig{margin-top:14px;font-size:.78rem;letter-spacing:.14em;color:rgba(160,200,255,.6)}
 /* ===== split menu ===== */
-.mcol{display:contents}
+.mcol{display:flex;gap:inherit}
 @media (min-width:900px){
-.menu{position:absolute;left:50%;top:calc(clamp(16px,3vh,40px) + var(--cs)*.88);transform:translate(-50%,-50%);width:100vw;margin:0;display:grid;grid-template-columns:calc(50vw - var(--cs)*.9) calc(50vw - var(--cs)*.9);justify-content:space-between;justify-items:center;align-items:center;row-gap:clamp(22px,3.6vh,34px);pointer-events:none}
-.menu .mbtn{pointer-events:auto}
-.menu .mbtn{min-width:200px;text-align:left}
+.menu{position:absolute;left:50%;top:calc(clamp(16px,3vh,40px) + var(--cs)*.88);transform:translate(-50%,-50%);width:100vw;margin:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.mcol{flex-direction:column;gap:clamp(22px,3.6vh,34px);width:calc(50vw - var(--cs)*.9);align-items:center!important}.mcol>*{pointer-events:auto}
+.ml{align-items:flex-end}.mr{align-items:flex-start}
+.mcol .mbtn{min-width:200px;text-align:left}
+.ml .mbtn,.mr .mbtn{text-align:left}
 }
 @media (max-width:899px){
 .menu{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:min(372px,100%);margin:clamp(40px,6.3vh,54px) auto 0}
-.menu .mbtn{min-width:0;text-align:center;padding-left:8px;padding-right:8px}
+.mcol{display:contents}
+.mcol .mbtn{text-align:center;padding-left:8px;padding-right:8px}
 }
 /* ===== holo beam ===== */
 .beam{position:fixed;z-index:19;pointer-events:none;opacity:0;transform-origin:0 50%;will-change:transform,opacity;clip-path:polygon(0 50%,100% 0,100% 100%);-webkit-clip-path:polygon(0 50%,100% 0,100% 100%);background:linear-gradient(90deg,rgba(150,210,255,.7) 0,rgba(63,169,255,.3) 40%,rgba(63,169,255,.08) 78%,rgba(63,169,255,0));transition:transform .38s cubic-bezier(.3,.7,.2,1),opacity .2s}
