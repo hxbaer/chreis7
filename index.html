@@ -269,6 +269,7 @@ html.neon .pjc:hover,html.neon .pjc:focus-visible{border-color:#00e0d1;backgroun
 .pjc a.pu:hover i,.pjc a.pu:focus-visible i{transform:translate(3px,-3px)}
 html.neon .pjc a.pu:hover,html.neon .pjc a.pu:focus-visible{border-bottom-color:#00e0d1}
 .pjc:hover{transform:none}
+.vice .sun,.vice svg{will-change:transform;backface-visibility:hidden}
 /* ===== NEON mode (test) – Vice City: cobalt > purple > hot pink > orange, teal accent ===== */
 html.neon{--c1:255,62,154;--c2:255,110,199;--c3:255,196,176;--c4:255,232,220;--n1:62,20,96;--n2:44,14,78;--n3:24,8,52;--n4:16,6,40;--n5:34,12,66;--t1:#ffe0ef;--t2:#ffb9d9;--t3:#fff3f8;--tA:#3b2bb0;--tB:#8a1f86;--tC:#2a0c4a;--glow:#ff3e9a;--glow2:#00e0d1;--bf:#00e0d1;--bg:#120a2e;--teal:0,224,209}
 html.neon body{background:linear-gradient(180deg,#14206e 0%,#2b1a80 22%,#5a1f8f 44%,#a0238a 62%,#e0407a 74%,#ff7a4a 84%,#ffb347 92%,#3a1240 92.5%,#1a0a2e 100%)}
@@ -516,7 +517,7 @@ html.neon .modesw .sw::after{left:16px}
   img.src='images/chreis7-perspective.webp';img.decoding='async';
   function prep(){
     if(!box.clientWidth||!box.clientHeight)return false;
-    dpr=Math.min(window.devicePixelRatio||1,2);W=box.clientWidth;H=box.clientHeight;
+    dpr=Math.min(window.devicePixelRatio||1,1.5);W=box.clientWidth;H=box.clientHeight;
     cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
     /* sample the photo at display size */
     var o=document.createElement('canvas');o.width=W;o.height=H;var ox=o.getContext('2d');ox.drawImage(img,0,0,W,H);
@@ -530,6 +531,8 @@ html.neon .modesw .sw::after{left:16px}
       m=Math.min(1,Math.sqrt(gx*gx+gy*gy)*1.6);
       if(m>.26){var a=Math.min(255,(m-.26)*520);q[k*4]=EC[0];q[k*4+1]=EC[1];q[k*4+2]=EC[2];q[k*4+3]=a}}
     ex.putImageData(ed,0,0);
+    /* bake glow once instead of shadowBlur every frame */
+    var gc=document.createElement('canvas');gc.width=W;gc.height=H;var gx2=gc.getContext('2d');gx2.filter='blur(2px)';gx2.drawImage(edge,0,0);gx2.filter='none';gx2.drawImage(edge,0,0);edge=gc;
     /* code grid: brightness per cell */
     cols=Math.ceil(W/CS);rows=Math.ceil(H/CS);lum=new Float32Array(cols*rows);glyph=[];
     for(var r2=0;r2<rows;r2++)for(var c=0;c<cols;c++){var s=0,n=0;
@@ -537,10 +540,12 @@ html.neon .modesw .sw::after{left:16px}
       lum[r2*cols+c]=n?s/n:0;glyph.push(CH[(Math.random()*CH.length)|0])}
     heads=[];for(c=0;c<cols;c++)heads.push({y:-Math.random()*rows*1.5,v:.25+Math.random()*.45});
     ready=true;return true}
-  var TH={};function theme(){var cs=getComputedStyle(document.documentElement);['c2','c3','c4'].forEach(function(k){TH[k]=cs.getPropertyValue('--'+k).trim()})}theme();document.addEventListener('ch7theme',function(){theme();ready=false});
+  var TH={};function theme(){var cs=getComputedStyle(document.documentElement);['c2','c3','c4'].forEach(function(k){TH[k]=cs.getPropertyValue('--'+k).trim()})}theme();document.addEventListener('ch7theme',function(){theme();ready=false;SC={}});
   function ease(x){return x<0?0:x>1?1:1-Math.pow(1-x,3)}
+  var lastF=0,SC={};function sty(col,a){var k=col+((a*20+.5)|0);return SC[k]||(SC[k]='rgba('+col+','+(((a*20+.5)|0)/20)+')')}
   function frame(now){
     if(!t0)t0=now;var t=(now-t0)/1000;
+    if(!lens&&now-lastF<30&&t<5.2){raf=requestAnimationFrame(frame);return}lastF=now;
     var scan=ease((t-.15)/2.0),fill=ease((t-.7)/2.0),photo=ease((t-3.4)/1.6);
     if(RM){scan=fill=photo=1}
     cx.clearRect(0,0,W,H);cx.fillStyle='#000';cx.fillRect(0,0,W,H);
@@ -555,9 +560,9 @@ html.neon .modesw .sw::after{left:16px}
         for(var r=0;r<rows;r++){var py=r*CS+CS/2;if(py<front)continue;var l=lum[r*cols+c];var dh=h.y-r,trail=dh>=0&&dh<9?1-dh/9:0;
           var a=.10+Math.min(1,l*2.2)*.8+trail*.6;a*=(1-photo*.85);if(a<.04)continue;
           if(Math.random()<.03)glyph[r*cols+c]=CH[(Math.random()*CH.length)|0];
-          cx.fillStyle=trail>.85?'rgba('+TH.c4+','+a+')':'rgba('+TH.c2+','+a+')';cx.fillText(glyph[r*cols+c],c*CS+CS/2,py)}}}
+          cx.fillStyle=sty(trail>.85?TH.c4:TH.c2,Math.min(1,a));cx.fillText(glyph[r*cols+c],c*CS+CS/2,py)}}}
     /* outlines drawn as the scan line climbs */
-    var sy=H*(1-scan);if(scan>0){cx.save();cx.beginPath();cx.rect(0,sy,W,H-sy);cx.clip();cx.globalAlpha=1-photo*.6;cx.shadowColor='rgba('+TH.c2+',.9)';cx.shadowBlur=photo<1?3:0;cx.drawImage(edge,0,0);cx.restore()}
+    var sy=H*(1-scan);if(scan>0){cx.save();cx.beginPath();cx.rect(0,sy,W,H-sy);cx.clip();cx.globalAlpha=1-photo*.6;cx.drawImage(edge,0,0);cx.restore()}
     if(scan>0&&scan<1){var g=cx.createLinearGradient(0,sy-26,0,sy+4);g.addColorStop(0,'rgba('+TH.c2+',0)');g.addColorStop(1,'rgba('+TH.c3+',.55)');cx.fillStyle=g;cx.fillRect(0,sy-26,W,30);cx.fillStyle='#e6f4ff';cx.fillRect(0,sy,W,1.5)}
     /* lens: peek back into the code */
     if(lens&&photo>=1){cx.save();cx.beginPath();cx.arc(lens.x,lens.y,64,0,7);cx.clip();cx.fillStyle='rgba(0,4,12,.88)';cx.fillRect(0,0,W,H);cx.drawImage(edge,0,0);
