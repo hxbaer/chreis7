@@ -2,7 +2,7 @@
 layout: null
 ---
 {% assign d = site.data.home %}<!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="index,follow">
@@ -348,7 +348,7 @@ html.neon .modesw .sw::after{left:16px}
 <button class="modesw" id="modesw" type="button" aria-pressed="false" title="Switch colour mode"><span class="sw" aria-hidden="true"></span><span class="lbl">ZRH</span></button>
 <div class="stage">
 <main>
-  <div class="core" id="core" role="button" tabindex="0" aria-label="Logo in 3D drehen">
+  <div class="core" id="core" role="button" tabindex="0" aria-label="Rotate the logo in 3D">
     <div class="ring r2"></div><div class="ring"></div><div class="ring r3"></div>
     <div class="l3d"><div class="tilt"><div class="spinz"><svg class="backf" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-20.0px) rotateY(180deg)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-19.2px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-17.6px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-16.0px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-14.4px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-12.8px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-11.2px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-9.6px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-8.0px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-6.4px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-4.8px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-3.2px)"><use href="#ch7m"/></svg><svg class="lyr" viewBox="0 0 520 525" aria-hidden="true" style="transform:translateZ(-1.6px)"><use href="#ch7m"/></svg><svg class="aperture" viewBox="0 0 520 525" role="img" aria-label="CHREIS7 Logo"><use href="#ch7m"/></svg></div></div></div>
   </div>
@@ -371,7 +371,7 @@ html.neon .modesw .sw::after{left:16px}
   <div class="shade" data-close></div>
   <div class="win">
     <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
-    <div class="whead"><span>CH7://01_ABOUT</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
+    <div class="whead"><span>CH7://01_ABOUT</span><button class="x" data-close aria-label="Close">✕</button></div>
     <div class="wbody about"><div class="frame bear" id="bear"><img class="base" src="{{ d.about.image }}" width="660" height="874" alt="{{ d.about.image_alt | escape }}" decoding="async"><img class="bloom" src="{{ d.about.image }}" alt="" aria-hidden="true" decoding="async"><div class="tint"></div><div class="shards" aria-hidden="true"></div><img class="miaimg" src="{{ d.about.neon_image }}" width="660" height="874" alt="{{ d.about.neon_image_alt | escape }}" loading="lazy" decoding="async"><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div>
       <div class="wtext">
         <p class="k">ABOUT CHREIS7</p>
@@ -388,8 +388,8 @@ html.neon .modesw .sw::after{left:16px}
   <div class="shade" data-close></div>
   <div class="win">
     <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
-    <div class="whead"><span>CH7://02_VISUALS</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
-    <div class="wbody"><div class="frame matrix" id="mx" role="img" aria-label="{{ d.visuals.description | escape }}"><canvas></canvas><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div><span class="mx-hint">TAP TO REBUILD</span></div></div></div>
+    <div class="whead"><span>CH7://02_VISUALS</span><button class="x" data-close aria-label="Close">✕</button></div>
+    <div class="wbody"><div class="frame matrix" id="mx" role="img" aria-label="{{ d.visuals.description | escape }}"><canvas></canvas><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div><span class="mx-hint">TAP TO REBUILD</span></div></div>
     <div class="wfoot"><span>{{ d.visuals.caption | escape }}</span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
   </div>
 </div>
@@ -397,7 +397,7 @@ html.neon .modesw .sw::after{left:16px}
   <div class="shade" data-close></div>
   <div class="win">
     <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
-    <div class="whead"><span>CH7://03_PROJECTS</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
+    <div class="whead"><span>CH7://03_PROJECTS</span><button class="x" data-close aria-label="Close">✕</button></div>
     <div class="wbody"><div class="wtext projects">
       <p class="k">PROJECTS</p>
       <h2>{{ d.projects.heading | escape }}</h2>
@@ -414,7 +414,7 @@ html.neon .modesw .sw::after{left:16px}
   <div class="shade" data-close></div>
   <div class="win">
     <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
-    <div class="whead"><span>CH7://04_CONTACT</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
+    <div class="whead"><span>CH7://04_CONTACT</span><button class="x" data-close aria-label="Close">✕</button></div>
     <div class="wbody"><div class="wtext contact">
       <p class="k">GET IN TOUCH</p>
       <h2>{{ d.contact.heading | escape }}</h2>
