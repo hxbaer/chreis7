@@ -334,7 +334,7 @@ html.neon .modesw .sw::after{left:16px}
 /* water floor (replaces the grid when WebGL is available) */
 .water{position:fixed;left:0;bottom:0;width:100%;height:30vh;pointer-events:none;display:none;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%);mask-image:linear-gradient(to bottom,transparent,#000 30%)}
 html.has-water .water{display:block}html.has-water .grid{display:none}
-html.neon .water{height:7.5vh;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%);mask-image:linear-gradient(to bottom,transparent,#000 12%)}
+html.neon .water{height:7.5vh;-webkit-mask-image:none;mask-image:none}
 @keyframes floor40{to{transform:translate3d(0,40px,0)}}
 @media (max-width:600px){.grid::before{animation-name:floor40}.water{height:24vh}html.neon .water{height:9vh}}
 </style>
@@ -620,7 +620,7 @@ tick();setInterval(tick,1000);document.addEventListener('ch7theme',tick)})();
   'vec3 deep=mix(vec3(.0,.02,.06),vec3(.08,.03,.18),mia);vec3 col=mix(deep,sky(max(rf.y,0.)),fr);'+
   'vec3 sd=normalize(vec3(.15,.12,1.));float sp=pow(max(dot(rf,sd),0.),mix(220.,90.,mia));vec3 sc=mix(vec3(.75,.88,1.),vec3(1.,.55,.3),mia);col+=sp*sc*mix(1.2,2.2,mia);'+
   'col+=mia*pow(max(dot(rf,normalize(vec3(-.4,.1,1.))),0.),60.)*vec3(0.,.9,.8)*.6;'+
-  'col*=mix(1.,.78,mia);float a=(1.-smoothstep(6.,26.,d))*(1.-smoothstep(-.03,-.004,rd.y));gl_FragColor=vec4(col,a);}';
+  'col*=mix(1.,.78,mia);float fd=1.-smoothstep(6.,26.,d);col=mix(col,mix(col,vec3(.1,.03,.16),1.-fd),mia);float a=mix(fd,1.,mia)*(1.-smoothstep(mix(-.03,-.006,mia),-.004,rd.y));gl_FragColor=vec4(col,a);}';
   function sh(ty,src){var s=g.createShader(ty);g.shaderSource(s,src);g.compileShader(s);return g.getShaderParameter(s,g.COMPILE_STATUS)?s:null}
   var vs=sh(g.VERTEX_SHADER,VS),fs=sh(g.FRAGMENT_SHADER,FS);if(!vs||!fs)return;
   var pr=g.createProgram();g.attachShader(pr,vs);g.attachShader(pr,fs);g.linkProgram(pr);if(!g.getProgramParameter(pr,g.LINK_STATUS))return;g.useProgram(pr);
