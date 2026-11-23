@@ -23,15 +23,9 @@ visuals:
 projects:
   heading: Beyond the circle.
   items:
-  - title: HANS BAER
-    subtitle: Professional Profile
-    url: https://www.hansbaer.ch
   - title: MR. B
     subtitle: Personal Brand
     url: https://www.mrbaer.ch
-  - title: MAISON BAER
-    subtitle: Private Dinner Club
-    url: https://www.maisonbaer.ch
 contact:
   heading: Let's talk.
   email: hoi@chreis7.ch
