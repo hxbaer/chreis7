@@ -1,11 +1,23 @@
 # Pages CMS – https://app.pagescms.org (Login mit GitHub, Repo hxbaer/chreis7 wählen)
-# Bilder, Logo und Animationen sind an die Effekte gebunden und bleiben im Code.
+media:
+  input: images
+  output: /images
+  extensions: [webp, jpg, jpeg, png]
 content:
   - name: home
-    label: Inhalte
+    label: Startseite
     type: file
     path: _data/home.yml
     fields:
+      - name: menu
+        label: Menü
+        type: object
+        fields:
+          - { name: about, label: "Button 01", type: string }
+          - { name: visuals, label: "Button 02", type: string }
+          - { name: projects, label: "Button 03", type: string }
+          - { name: contact, label: "Button 04", type: string }
+          - { name: legal, label: Link zum Impressum (oben), type: string }
       - name: about
         label: "01 About"
         type: object
@@ -13,6 +25,26 @@ content:
           - { name: heading, label: "Überschrift (<br> = Zeilenumbruch)", type: string }
           - { name: paragraphs, label: Absätze, type: text, list: true }
           - { name: tags, label: Schlagworte, type: string }
+          - name: image
+            label: Porträt (Bär-Effekt)
+            type: image
+            description: "Genau 660 × 874 px (Hochformat 3:4), WebP. Der Kristall-Effekt wird über das Bild gelegt; ein Gesicht in der Bildmitte wirkt am besten."
+          - { name: image_alt, label: Bildbeschreibung (Alt-Text), type: string }
+          - name: neon_image
+            label: Porträt im Neon-Modus (MIA)
+            type: image
+            description: "Genau 660 × 874 px, WebP. Wird angezeigt, wenn oben rechts auf MIA umgeschaltet ist."
+          - { name: neon_image_alt, label: Bildbeschreibung Neon-Porträt, type: string }
+      - name: visuals
+        label: "02 Visuals"
+        type: object
+        fields:
+          - name: image
+            label: Foto für den Code-Effekt
+            type: image
+            description: "Hochformat 3:4, ca. 720 × 960 px, WebP. Starke Kontraste und klare Linien (z.B. Gebäude bei Nacht) geben die beste Linienzeichnung."
+          - { name: description, label: Bildbeschreibung (Screenreader), type: text }
+          - { name: caption, label: Bildnachweis unten im Fenster, type: string }
       - name: projects
         label: "03 Projects"
         type: object
@@ -45,3 +77,50 @@ content:
           - { name: description, label: Beschreibung für Google, type: text }
           - { name: share_title, label: Titel in Link-Vorschauen, type: string }
           - { name: share_description, label: Beschreibung in Link-Vorschauen, type: string }
+          - { name: share_image, label: Vorschaubild, type: image, description: "667 × 882 px, JPG" }
+  - name: brand
+    label: Logo & Icons
+    type: file
+    path: _data/brand.yml
+    fields:
+      - name: logo_svg
+        label: Logo (SVG-Code)
+        type: code
+        description: "Inhalt eines SVG mit viewBox 0 0 520 525, ohne <svg>-Tag. Flächen mit style=\"fill:var(--wf,#fff)\" werden hell, mit style=\"fill:var(--bf,#1a7dff)\" in der Akzentfarbe. Wird auf Startseite (3D) und Impressum verwendet."
+      - name: favicon_svg
+        label: Browser-Icon (komplettes SVG)
+        type: code
+        description: Wird auch auf der 404-Seite angezeigt.
+      - name: favicon_neon_svg
+        label: Browser-Icon im Neon-Modus (komplettes SVG)
+        type: code
+  - name: legal
+    label: Impressum & Datenschutz
+    type: file
+    path: _data/legal.yml
+    fields:
+      - { name: seo_title, label: Seitentitel (Browser-Tab), type: string }
+      - { name: back_label, label: Zurück-Button, type: string }
+      - { name: tag, label: Kennzeichnung oben rechts, type: string }
+      - name: panels
+        label: Abschnitte
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Überschrift, type: string }
+          - { name: subtitle, label: Unterzeile, type: string }
+          - { name: code, label: "Kennung (z.B. CH7://PRIVACY)", type: string }
+          - { name: anchor, label: Anker, type: string, description: "legal-notice bzw. privacy – der Kontaktbereich verlinkt auf #privacy" }
+          - { name: body, label: Text, type: rich-text }
+      - { name: updated, label: Stand, type: string }
+  - name: notfound
+    label: Fehlerseite (404)
+    type: file
+    path: _data/notfound.yml
+    fields:
+      - { name: status, label: Statuszeile oben, type: string }
+      - { name: code, label: Code, type: string }
+      - { name: heading, label: Überschrift, type: string }
+      - { name: text, label: Text, type: string }
+      - { name: button, label: Button, type: string }
+      - { name: seo_title, label: Seitentitel (Browser-Tab), type: string }

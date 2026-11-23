@@ -1,29 +1,44 @@
 # Inhalte von chreis7.ch. Bearbeitung über Pages CMS (app.pagescms.org).
-# Design, Animationen und Bilder mit Effekten sind fest im Code (index.html).
+# Felder mit HTML (z.B. <br>) werden unverändert übernommen.
+menu:
+  about: About
+  visuals: Visuals
+  projects: Projects
+  contact: Get in touch
+  legal: LEGAL
 about:
-  heading: "A digital playground.<br>Never finished."
+  heading: A digital playground.<br>Never finished.
   paragraphs:
-    - "CHREIS7 is my personal space for digital exploration, creativity and experimentation."
-    - "A place where ideas turn into visuals, interactions and unexpected experiences. No fixed direction, no final version. Just curiosity, creativity and the freedom to keep evolving."
-  tags: "EXPLORE · EXPERIMENT · CREATE · EVOLVE"
+  - CHREIS7 is my personal space for digital exploration, creativity and experimentation.
+  - A place where ideas turn into visuals, interactions and unexpected experiences. No fixed direction, no final version. Just curiosity, creativity and the freedom to keep evolving.
+  tags: EXPLORE · EXPERIMENT · CREATE · EVOLVE
+  image: /images/chreis7-about.webp
+  image_alt: Portrait, half the face turning into a crystal bear
+  neon_image: /images/chreis7-about-mia.webp
+  neon_image_alt: Neon portrait in front of Miami palm trees
+visuals:
+  image: /images/chreis7-perspective.webp
+  description: The Grossmünster in Zürich at night, drawn line by line and filled with falling code before the photo appears. Tap to rebuild.
+  caption: ZRH · GROSSMÜNSTER · PHOTO C. SCHWARZ / UNSPLASH
 projects:
-  heading: "Beyond the circle."
+  heading: Beyond the circle.
   items:
-    - title: "HANS BAER"
-      subtitle: "Professional Profile"
-      url: "https://www.hansbaer.ch"
-    - title: "MR. B"
-      subtitle: "Personal Brand"
-      url: "https://www.mrbaer.ch"
-    - title: "MAISON BAER"
-      subtitle: "Private Dinner Club"
-      url: "https://www.maisonbaer.ch"
+  - title: HANS BAER
+    subtitle: Professional Profile
+    url: https://www.hansbaer.ch
+  - title: MR. B
+    subtitle: Personal Brand
+    url: https://www.mrbaer.ch
+  - title: MAISON BAER
+    subtitle: Private Dinner Club
+    url: https://www.maisonbaer.ch
 contact:
-  heading: "Let's talk."
-  email: "hoi@chreis7.ch"
-  thanks: "Thank you – your message is on its way. You will hear back soon."
+  heading: Let's talk.
+  email: hoi@chreis7.ch
+  thanks: Thank you – your message is on its way. You will hear back soon.
 seo:
-  title: "CHREIS7 — A Personal Digital Playground"
-  description: "Interactive design, motion and visuals from Zürich. A creative base for ideas, experiments and side projects. Never finished."
-  share_title: "CHREIS7 — Full circle. Endless motion."
-  share_description: "A personal digital playground. Never finished."
+  title: CHREIS7 — A Personal Digital Playground
+  description: Interactive design, motion and visuals from Zürich. A creative base for ideas, experiments and side projects. Never finished.
+  share_title: CHREIS7 — Full circle. Endless motion.
+  share_description: A personal digital playground. Never finished.
+  share_image: /images/chreis7-zurich.jpg

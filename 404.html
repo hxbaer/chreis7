@@ -1,9 +1,12 @@
-<!doctype html>
+---
+layout: null
+---
+{% assign n = site.data.notfound %}<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>CHREIS7 — A Personal Digital Playground</title>
+<title>{{ n.seo_title | escape }}</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#030406">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -33,13 +36,13 @@ a:hover,a:focus-visible{background:rgba(26,125,255,.32);color:#fff;box-shadow:0 
 </style>
 </head>
 <body>
-<div class="hud" aria-hidden="true"><i></i><i></i><i></i><i></i><span><b class="dot"></b>SIGNAL LOST</span></div>
+<div class="hud" aria-hidden="true"><i></i><i></i><i></i><i></i><span><b class="dot"></b>{{ n.status | escape }}</span></div>
 <main>
   <img src="/favicon.svg" alt="">
-  <div class="code">404</div>
-  <h1>OUT OF FRAME</h1>
-  <p>THIS ANGLE DOESN’T EXIST.</p>
-  <a href="/">BACK TO START</a>
+  <div class="code">{{ n.code | escape }}</div>
+  <h1>{{ n.heading | escape }}</h1>
+  <p>{{ n.text | escape }}</p>
+  <a href="/">{{ n.button | escape }}</a>
 </main>
 </body>
 </html>
