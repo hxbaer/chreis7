@@ -1,13 +1,16 @@
-<!doctype html>
+---
+layout: null
+---
+{% assign d = site.data.home %}<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="index,follow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CHREIS7 — A Personal Digital Playground</title>
-<meta name="description" content="Interactive design, motion and visuals from Zürich. A creative base for ideas, experiments and side projects. Never finished.">
-<meta property="og:title" content="CHREIS7 — Full circle. Endless motion.">
-<meta property="og:description" content="A personal digital playground. Never finished.">
+<title>{{ d.seo.title | escape }}</title>
+<meta name="description" content="{{ d.seo.description | escape }}">
+<meta property="og:title" content="{{ d.seo.share_title | escape }}">
+<meta property="og:description" content="{{ d.seo.share_description | escape }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.chreis7.ch/">
 <meta property="og:site_name" content="CHREIS7">
@@ -372,10 +375,11 @@ html.neon .modesw .sw::after{left:16px}
     <div class="wbody about"><div class="frame bear" id="bear"><img class="base" src="images/chreis7-about.webp" width="660" height="874" alt="Portrait, half the face turning into a crystal bear" decoding="async"><img class="bloom" src="images/chreis7-about.webp" alt="" aria-hidden="true" decoding="async"><div class="tint"></div><div class="shards" aria-hidden="true"></div><img class="miaimg" src="images/chreis7-about-mia.webp" width="660" height="874" alt="Neon portrait in front of Miami palm trees" loading="lazy" decoding="async"><div class="vig"></div><div class="ret"><i></i><i></i><i></i><i></i><b>REC</b></div></div>
       <div class="wtext">
         <p class="k">ABOUT CHREIS7</p>
-        <h2>A digital playground.<br>Never finished.</h2>
-        <p>CHREIS7 is my personal space for digital exploration, creativity and experimentation.</p>
-        <p>A place where ideas turn into visuals, interactions and unexpected experiences. No fixed direction, no final version. Just curiosity, creativity and the freedom to keep evolving.</p>
-        <p class="tags">EXPLORE · EXPERIMENT · CREATE · EVOLVE</p>
+        <h2>{{ d.about.heading }}</h2>
+{%- for p in d.about.paragraphs %}
+        <p>{{ p }}</p>
+{%- endfor %}
+        <p class="tags">{{ d.about.tags | escape }}</p>
       </div></div>
     <div class="wfoot"><span><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">MIA · 25.76N 80.19W</em></span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
   </div>
@@ -396,11 +400,11 @@ html.neon .modesw .sw::after{left:16px}
     <div class="whead"><span>CH7://03_PROJECTS</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
     <div class="wbody"><div class="wtext projects">
       <p class="k">PROJECTS</p>
-      <h2>Beyond the circle.</h2>
+      <h2>{{ d.projects.heading | escape }}</h2>
       <div class="pj">
-        <div class="pjc"><span class="pn">P/01</span><span class="pt">HANS BAER</span><span class="pd">Professional Profile</span><span class="pl"><a class="pu" href="https://www.hansbaer.ch" target="_blank" rel="noopener">www.hansbaer.ch <i>↗</i></a></span></div>
-        <div class="pjc"><span class="pn">P/02</span><span class="pt">MR. B</span><span class="pd">Personal Brand</span><span class="pl"><a class="pu" href="https://www.mrbaer.ch" target="_blank" rel="noopener">www.mrbaer.ch <i>↗</i></a></span></div>
-        <div class="pjc"><span class="pn">P/03</span><span class="pt">MAISON BAER</span><span class="pd">Private Dinner Club</span><span class="pl"><a class="pu" href="https://www.maisonbaer.ch" target="_blank" rel="noopener">www.maisonbaer.ch <i>↗</i></a></span></div>
+{%- for p in d.projects.items %}
+        <div class="pjc"><span class="pn">P/{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span class="pt">{{ p.title | escape }}</span><span class="pd">{{ p.subtitle | escape }}</span><span class="pl"><a class="pu" href="{{ p.url | escape }}" target="_blank" rel="noopener">{{ p.url | split: "//" | last | escape }} <i>↗</i></a></span></div>
+{%- endfor %}
       </div>
     </div></div>
     <div class="wfoot"><span><em class="loc-z">ZRH · 47.37N 8.54E</em><em class="loc-v">MIA · 25.76N 80.19W</em></span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
@@ -413,7 +417,7 @@ html.neon .modesw .sw::after{left:16px}
     <div class="whead"><span>CH7://04_CONTACT</span><button class="x" data-close aria-label="Schliessen">✕</button></div>
     <div class="wbody"><div class="wtext contact">
       <p class="k">GET IN TOUCH</p>
-      <h2>Let's talk.</h2>
+      <h2>{{ d.contact.heading | escape }}</h2>
       <form class="cf" id="cf" novalidate>
         <div class="row">
           <label class="fld"><span>NAME</span><input name="name" type="text" autocomplete="name" required maxlength="80"></label>
@@ -427,7 +431,7 @@ html.neon .modesw .sw::after{left:16px}
       </form>
       <div class="cf-done" hidden>
         <p class="k">TRANSMISSION RECEIVED</p>
-        <p>Thank you – your message is on its way. You will hear back soon.</p>
+        <p>{{ d.contact.thanks | escape }}</p>
       </div>
     </div></div>
     <div class="wfoot"><span>CH7 · CHANNEL OPEN</span><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div>
@@ -486,7 +490,7 @@ html.neon .modesw .sw::after{left:16px}
 <script>
 (function(){
   var f=document.getElementById('cf');if(!f)return;
-  var ENDPOINT='https://formsubmit.co/ajax/hoi@chreis7.ch';
+  var ENDPOINT='https://formsubmit.co/ajax/{{ d.contact.email }}';
   var btn=f.querySelector('.send'),msg=f.querySelector('.cf-msg'),done=f.parentNode.querySelector('.cf-done');
   function bad(el,on){el.classList.toggle('bad',on)}
   f.addEventListener('submit',function(e){e.preventDefault();msg.textContent='';

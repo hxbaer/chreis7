@@ -1,0 +1,29 @@
+# Inhalte von chreis7.ch. Bearbeitung über Pages CMS (app.pagescms.org).
+# Design, Animationen und Bilder mit Effekten sind fest im Code (index.html).
+about:
+  heading: "A digital playground.<br>Never finished."
+  paragraphs:
+    - "CHREIS7 is my personal space for digital exploration, creativity and experimentation."
+    - "A place where ideas turn into visuals, interactions and unexpected experiences. No fixed direction, no final version. Just curiosity, creativity and the freedom to keep evolving."
+  tags: "EXPLORE · EXPERIMENT · CREATE · EVOLVE"
+projects:
+  heading: "Beyond the circle."
+  items:
+    - title: "HANS BAER"
+      subtitle: "Professional Profile"
+      url: "https://www.hansbaer.ch"
+    - title: "MR. B"
+      subtitle: "Personal Brand"
+      url: "https://www.mrbaer.ch"
+    - title: "MAISON BAER"
+      subtitle: "Private Dinner Club"
+      url: "https://www.maisonbaer.ch"
+contact:
+  heading: "Let's talk."
+  email: "hoi@chreis7.ch"
+  thanks: "Thank you – your message is on its way. You will hear back soon."
+seo:
+  title: "CHREIS7 — A Personal Digital Playground"
+  description: "Interactive design, motion and visuals from Zürich. A creative base for ideas, experiments and side projects. Never finished."
+  share_title: "CHREIS7 — Full circle. Endless motion."
+  share_description: "A personal digital playground. Never finished."

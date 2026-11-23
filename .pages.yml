@@ -1,0 +1,47 @@
+# Pages CMS – https://app.pagescms.org (Login mit GitHub, Repo hxbaer/chreis7 wählen)
+# Bilder, Logo und Animationen sind an die Effekte gebunden und bleiben im Code.
+content:
+  - name: home
+    label: Inhalte
+    type: file
+    path: _data/home.yml
+    fields:
+      - name: about
+        label: "01 About"
+        type: object
+        fields:
+          - { name: heading, label: "Überschrift (<br> = Zeilenumbruch)", type: string }
+          - { name: paragraphs, label: Absätze, type: text, list: true }
+          - { name: tags, label: Schlagworte, type: string }
+      - name: projects
+        label: "03 Projects"
+        type: object
+        fields:
+          - { name: heading, label: Überschrift, type: string }
+          - name: items
+            label: Projekte
+            type: object
+            list: true
+            description: Die Nummerierung P/01, P/02 … ergibt sich aus der Reihenfolge.
+            fields:
+              - { name: title, label: Name, type: string }
+              - { name: subtitle, label: Beschreibung, type: string }
+              - { name: url, label: Link, type: string, description: "mit https://" }
+      - name: contact
+        label: "04 Get in touch"
+        type: object
+        fields:
+          - { name: heading, label: Überschrift, type: string }
+          - name: email
+            label: Empfänger der Nachrichten
+            type: string
+            description: Läuft über FormSubmit. Eine neue Adresse muss nach der ersten Nachricht per Bestätigungsmail freigeschaltet werden.
+          - { name: thanks, label: Danke-Text, type: text }
+      - name: seo
+        label: SEO & Teilen
+        type: object
+        fields:
+          - { name: title, label: Seitentitel, type: string }
+          - { name: description, label: Beschreibung für Google, type: text }
+          - { name: share_title, label: Titel in Link-Vorschauen, type: string }
+          - { name: share_description, label: Beschreibung in Link-Vorschauen, type: string }
